@@ -48,6 +48,15 @@ else()
     MESSAGE(FATAL_ERROR "Boost not found in the system.")
 endif()
 
+if(${CMAKE_HOST_APPLE})
+    find_package( X11 REQUIRED )
+    MESSAGE("X11 information:")
+    MESSAGE("  X11_INCLUDE_DIR: ${X11_INCLUDE_DIR}")
+    MESSAGE("  X11_LIBRARIES: ${X11_LIBRARIES}")
+    MESSAGE("  X11_LIBRARY_DIRS: ${X11_LIBRARY_DIRS}")
+    include_directories( ${X11_INCLUDE_DIR} )
+endif()
+
 # Try finding TBB in default location
 find_package( TBB CONFIG )
 
@@ -263,3 +272,4 @@ add_subdirectory(exe/FaceLandmarkImg)
 add_subdirectory(exe/FaceLandmarkVid)
 add_subdirectory(exe/FaceLandmarkVidMulti)
 add_subdirectory(exe/FeatureExtraction)
+add_subdirectory(exe/FaceLandmarkVidZmq)

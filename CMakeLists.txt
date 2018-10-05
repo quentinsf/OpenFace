@@ -172,7 +172,7 @@ else ()
 endif ()
 
 # dlib
-find_package(dlib 19.13)
+find_package(dlib 19.15)
 if(${dlib_FOUND})
     message("dlib information:")
     message("  dlib version: ${dlib_VERSION}")

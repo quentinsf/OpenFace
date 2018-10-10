@@ -1,3 +1,9 @@
+# About this OpenFace fork
+
+This fork build an additional binary, FaceLandmarkVidZmq, which is a version of the FaceLandmarkVid executable that outputs some of the parameters over a ZeroMQ socket.  This means they can be read at speed by other processes.
+
+It was originally created by Ian Davies for use with '[Charles](https://github.com/daviesian/charles)', an animatronic head.
+
 # OpenFace 2.0.6: an open source facial behavior analysis toolkit
 
 [![Build Status](https://travis-ci.org/TadasBaltrusaitis/OpenFace.svg?branch=master)](https://travis-ci.org/TadasBaltrusaitis/OpenFace)

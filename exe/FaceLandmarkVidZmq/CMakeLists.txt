@@ -9,8 +9,12 @@ target_link_libraries(FaceLandmarkVidZmq FaceAnalyser)
 target_link_libraries(FaceLandmarkVidZmq GazeAnalyser)
 target_link_libraries(FaceLandmarkVidZmq Utilities)
 
+find_library(ZEROMQ_LIB NAMES zmq libzmq libzeromq)
+MESSAGE("ZeroMQ library found at ${ZEROMQ_LIB}")
+
+target_link_libraries(FaceLandmarkVidZmq ${ZEROMQ_LIB})
+
 include_directories(cppzmq)
-target_link_libraries(FaceLandmarkVidZmq zmq)
 
 # target_link_libraries(FaceLandmarkVidZmq dlib)
 

@@ -1,6 +1,6 @@
 # About this OpenFace fork
 
-This fork build an additional binary, FaceLandmarkVidZmq, which is a version of the FaceLandmarkVid executable that outputs some of the parameters over a ZeroMQ socket.  This means they can be read at speed by other processes.
+This fork build an additional binary, FaceLandmarkVidZmq, which is a version of the FaceLandmarkVid executable that outputs some of the parameters over a ZeroMQ socket on port 5556.  This means they can be read at speed by other processes.
 
 It was originally created by Ian Davies for use with '[Charles](https://github.com/daviesian/charles)', an animatronic head.
 

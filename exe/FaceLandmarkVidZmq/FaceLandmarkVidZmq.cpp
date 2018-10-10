@@ -31,7 +31,9 @@
 //       IEEE International Conference on Automatic Face and Gesture Recognition, 2015 
 //
 ///////////////////////////////////////////////////////////////////////////////
-// FaceTrackingVid.cpp : Defines the entry point for the console application for tracking faces in videos.
+// FaceTrackingVidZmq.cpp : Defines the entry point for the console application for tracking faces in videos.
+
+// This version publishes data to a zeromq socket on port 5556.
 
 // Must include this before winsock.h. ZMQ needs this, something else needs winsock.h
 // #include <winsock2.h>
@@ -204,38 +206,39 @@ int main(int argc, char **argv)
 				zmq::message_t messageLocal(local.c_str(), local.length());
 				publisher.send(messageLocal);
 
+				// cv::Mat sim_warped_img;
+				// cv::Mat_<double> hog_descriptor; int num_hog_rows = 0, num_hog_cols = 0;
+
+				face_analyser.PredictStaticAUsAndComputeFeatures(rgb_image, face_model.detected_landmarks);
+				// face_analyser.GetLatestAlignedFace(sim_warped_img);
+				// face_analyser.GetLatestHOG(hog_descriptor, num_hog_rows, num_hog_cols);
+
 				stringstream auStream;
 				auStream << "AU";
 
-
+				// Intensity info
 				auto aus_reg = face_analyser.GetCurrentAUsReg();
 
+				// We want to output values in name order
 				vector<string> au_reg_names = face_analyser.GetAURegNames();
 				std::sort(au_reg_names.begin(), au_reg_names.end());
-
-				int i = 0;
-				// write out ar the correct index
 				for (string au_name : au_reg_names)
 				{
-					std::cout << "AU name: " << au_name << std::endl;
 					for (auto au_reg : aus_reg)
 					{
-						std::cout << "  AU reg: " << au_reg.first << " " << au_reg.second << std::endl;
 						if (au_name.compare(au_reg.first) == 0)
 						{
 							auStream << " " << au_name << ":" << au_reg.second;
-
-							stringstream auss;
-							auss << au_name << ": " << au_reg.second;
-							// cv::putText(captured_image, auss.str(), cv::Point(10, 30 + 20 * (i++)), CV_FONT_HERSHEY_SIMPLEX, 0.5, CV_RGB(255, 0, 128));
 							break;
 						}
 					}
 				}
 
 
+				// Presence info
 				auto aus_class = face_analyser.GetCurrentAUsClass();
 
+				// We want to output values in name order
 				vector<string> au_class_names = face_analyser.GetAUClassNames();
 				std::sort(au_class_names.begin(), au_class_names.end());
 

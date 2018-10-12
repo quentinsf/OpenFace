@@ -219,9 +219,11 @@ int main(int argc, char **argv)
 				// Intensity info
 				auto aus_reg = face_analyser.GetCurrentAUsReg();
 
-				// We want to output values in name order
+				// We want to output the values in name order
 				vector<string> au_reg_names = face_analyser.GetAURegNames();
 				std::sort(au_reg_names.begin(), au_reg_names.end());
+
+				stringstream auss;
 				for (string au_name : au_reg_names)
 				{
 					for (auto au_reg : aus_reg)
@@ -229,10 +231,13 @@ int main(int argc, char **argv)
 						if (au_name.compare(au_reg.first) == 0)
 						{
 							auStream << " " << au_name << ":" << au_reg.second;
+
+							auss << au_name << ": " << au_reg.second << "\n";						
 							break;
 						}
 					}
 				}
+				INFO_STREAM(auss.str());
 
 
 				// Presence info

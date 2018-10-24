@@ -240,25 +240,25 @@ int main(int argc, char **argv)
 				INFO_STREAM(auss.str());
 
 
-				// Presence info
-				auto aus_class = face_analyser.GetCurrentAUsClass();
+				// // Presence info
+				// auto aus_class = face_analyser.GetCurrentAUsClass();
 
-				// We want to output values in name order
-				vector<string> au_class_names = face_analyser.GetAUClassNames();
-				std::sort(au_class_names.begin(), au_class_names.end());
+				// // We want to output values in name order
+				// vector<string> au_class_names = face_analyser.GetAUClassNames();
+				// std::sort(au_class_names.begin(), au_class_names.end());
 
-				// write out ar the correct index
-				for (string au_name : au_class_names)
-				{
-					for (auto au_class : aus_class)
-					{
-						if (au_name.compare(au_class.first) == 0)
-						{
-							auStream << " " << au_name << ":" << au_class.second;
-							break;
-						}
-					}
-				}
+				// // write out ar the correct index
+				// for (string au_name : au_class_names)
+				// {
+				// 	for (auto au_class : aus_class)
+				// 	{
+				// 		if (au_name.compare(au_class.first) == 0)
+				// 		{
+				// 			auStream << " " << au_name << ":" << au_class.second;
+				// 			break;
+				// 		}
+				// 	}
+				// }
 
 				string aus = auStream.str();
 

@@ -36,7 +36,7 @@
 // This version publishes data to a zeromq socket on port 5556.
 
 // Must include this before winsock.h. ZMQ needs this, something else needs winsock.h
-// #include <winsock2.h>
+#include <winsock2.h>
 
 // Libraries for landmark detection (includes CLNF and CLM modules)
 #include "LandmarkCoreIncludes.h"

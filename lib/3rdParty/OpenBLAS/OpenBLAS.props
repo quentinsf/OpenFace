@@ -8,7 +8,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)lib\3rdParty\OpenBLAS\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\3rdParty\OpenBLAS\lib\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\3rdParty\OpenBLAS\lib;$(SolutionDir)lib\3rdParty\OpenBLAS\lib\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libopenblas.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent />
